@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+
 from api_esp.server.measurements import router
 from api_esp.server.database import init_db
 
