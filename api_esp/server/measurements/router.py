@@ -23,7 +23,9 @@ def get_temperature(location: str, db: Session = Depends(get_db)):
 
 @router.post("/temperature")
 def post_temperature(data: TemperatureValue, db: Session = Depends(get_db)):
-	db_data = TemperatureModel(device_id = data.device_id, value = data.value, location = data.location.lower())
+	db_data = TemperatureModel(device_id = data.device_id, value = data.value, 
+								location = data.location.lower(),
+								timestamp = data.timestamp)
 	db.add(db_data)
 	db.commit()
 	db.refresh(db_data)
